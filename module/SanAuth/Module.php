@@ -30,11 +30,8 @@ class Module implements AutoloaderProviderInterface {
             return new \SanAuth\Model\MyAuthStorage('zf_tutorial');
         },
                 'AuthService' => function($sm) {
-            //My assumption, you've alredy set dbAdapter
-            //and has users table with columns : user_name and pass_word
-            //that password hashed with md5
             $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-            $dbTableAuthAdapter = new DbTableAuthAdapter($dbAdapter, 'users', 'user_name', 'pass_word');//, 'MD5(?)');
+            $dbTableAuthAdapter = new DbTableAuthAdapter($dbAdapter, 'user', 'username', 'password');//, 'MD5(?)');
 
             $authService = new AuthenticationService();
             $authService->setAdapter($dbTableAuthAdapter);

@@ -1,0 +1,43 @@
+<link  rel="stylesheet" href="<?php echo $this->basePath('css/style.css') ?>">
+        </link>
+
+<?php
+// module/Serie/view/serie/serie/index.phtml:
+
+$title = 'Mes séries';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    Bienvenue <?php echo $_SESSION['zf_tutorial']['storage']; ?> !<br/>
+    <a href="<?php echo $this->url('serie', array('action' => 'add')); ?>">Ajouter une série</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Image</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Saison</th>
+        <th>Episode</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($series as $serie) : ?>
+        <tr>
+            <td><?php echo "<img src='" . $this->escapeHtml($serie->imageSerie) . "' width='150' height='200' alt='img' id='img'" ?></td>
+            <td><?php echo $this->escapeHtml($serie->nomSerie); ?></td>
+            <td><?php echo $this->escapeHtml($serie->descriptionSerie); ?></td>
+            <td><?php echo $this->escapeHtml($serie->saison); ?></td>
+            <td><?php echo $this->escapeHtml($serie->episode); ?></td>
+
+            <td>
+                <a href="<?php echo $this->url('serie', array('action' => 'edit', 'idSerie' => $serie->idSerie));
+        ?>">Edit</a>
+                <a href="<?php echo $this->url('serie', array('action' => 'delete', 'idSerie' => $serie->idSerie));
+        ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<a href = "<?php echo $this->url('login/process', array('action' => 'logout')); ?>">Logout</a>

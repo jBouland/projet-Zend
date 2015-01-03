@@ -15,7 +15,7 @@
 return array(
     'db' => array(
         'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=zend_album;host=127.0.0.1',
+        'dsn' => 'mysql:dbname=projetzend;host=localhost',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
@@ -26,7 +26,7 @@ return array(
             => 'Zend\Db\Adapter\AdapterServiceFactory',
             'Zend\Log\Logger' => function($sm) {
         $logger = new Zend\Log\Logger;
-        $writer = new Zend\Log\Writer\Stream('F:/logs/zend' . date('Y-m-d') . '-error.log');
+        $writer = new Zend\Log\Writer\Stream('D:\Users\Joris\Documents\IUT info\Semestre 3\Java\zend_tuto' . date('Y-m-d') . '-error.log');
 
         $filter = new Zend\Log\Filter\Priority(Zend\Log\Logger::INFO);
         $writer->addFilter($filter);
