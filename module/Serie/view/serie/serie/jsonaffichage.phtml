@@ -4,16 +4,16 @@
 <?php
 // module/Serie/view/serie/serie/index.phtml:
 
-$title = 'To Json';
+$title = 'To Json... and beyond !';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-<h3> Bienvenue sur le laboratoire Json ! </h3>
-<p> On y teste la technologie Json, la pagination, le tri... Bref des trucs pour contrôler le monde.</p>
+<h3> Bienvenue sur le laboratoire Json. </h3>
+<p> On y teste la technologie Json, la pagination, le tri (ici par ordre alphabétique)... Bref des trucs pour contrôler le monde.</p>
 
 <style>
     table, th , td  {
-        border: 1px solid grey;
+        border:1px solid grey;
         border-collapse: collapse;
         padding: 5px;
     }
@@ -29,10 +29,18 @@ $this->headTitle($title);
 
 <body>
 
+
     <div ng-app="" ng-controller="customersController"> 
 
         <table>
-            <tr ng-repeat="x in names">
+            <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Saison</th>
+                <th>Episode</th>
+            </tr>
+            <tr ng-repeat="x in names | orderBy : 'nomSerie'">
                 <td> <img src={{x.imageSerie}} width='150' height='200' alt='img' id='img'></td>
                 <td>{{ x.nomSerie}}</td>
                 <td>{{ x.descriptionSerie}}</td>
