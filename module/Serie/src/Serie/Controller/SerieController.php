@@ -10,14 +10,16 @@ namespace Serie\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Serie\Model\Serie;         
-use Serie\Form\SerieForm;     
+use Serie\Model\Serie;
+use Serie\Form\SerieForm;
+use Zend\Json\Json as Json;
 
 class SerieController extends AbstractActionController {
 
     protected $serieTable;
 
     public function indexAction() {
+
         return new ViewModel(array(
             'series' => $this->getSerieTable()->fetchAll(),
         ));
@@ -113,6 +115,18 @@ class SerieController extends AbstractActionController {
             $this->serieTable = $sm->get('Serie\Model\SerieTable');
         }
         return $this->serieTable;
+    }
+
+    public function jsonAction() {
+
+        $view = Json::encode($this->getSerieTable()->fetchAll());
+        echo $view;
+        exit(0);
+        //return array('json'=>$view);
+    }
+
+    public function jsonaffichageAction() {
+        
     }
 
 }
