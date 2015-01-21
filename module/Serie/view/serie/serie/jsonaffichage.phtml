@@ -1,0 +1,56 @@
+<link  rel="stylesheet" href="<?php echo $this->basePath('css/style.css') ?>">
+</link>
+
+<?php
+// module/Serie/view/serie/serie/index.phtml:
+
+$title = 'To Json';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<h3> Bienvenue sur le laboratoire Json ! </h3>
+<p> On y teste la technologie Json, la pagination, le tri... Bref des trucs pour contrôler le monde.</p>
+
+<style>
+    table, th , td  {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd)	{
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+</style>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="" ng-controller="customersController"> 
+
+        <table>
+            <tr ng-repeat="x in names">
+                <td> <img src={{x.imageSerie}} width='150' height='200' alt='img' id='img'></td>
+                <td>{{ x.nomSerie}}</td>
+                <td>{{ x.descriptionSerie}}</td>
+                <td>{{ x.saison}}</td>
+                <td>{{ x.episode}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        function customersController($scope, $http) {
+              $http.get("http://localhost/bouland/public/serie/json")
+                    .success(function(response) {
+                        $scope.names = response;
+                    });
+        }
+    </script>
+
+</body>
+</html>
