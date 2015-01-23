@@ -36,3 +36,6 @@ Il peut être nécessaire de cocher la case "Copy files on project open" dans le
 Tests :
 Les tests peuvent être effectués avec 2 comptes: admin (mot de passe: admin) et test (mot de passe: test).
 
+//**** TESTS JSON ****////
+
+Une fois connecté avec un des deux comptes (admin/admin ou test/test), vous pourrez tester l'utilisation de json en cliquant sur l'hyperlien en bas de la page "toJson". Vous pourrez y voir un exemple d'affichage grâce à json et trier par ordre alphabétique.
